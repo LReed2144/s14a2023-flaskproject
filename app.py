@@ -30,7 +30,7 @@ def show_datetime():
     response += f"UTC Time: {utc_time_str}<br>"
     response += f"Your Time: {your_time_str}"
 
-    return response
+    return render_template('index.html', response=response)
 
 if __name__ == '__main__':
     app.run()
