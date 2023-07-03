@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World! Welcome to S14A2023'
+    return 'Hello World! Welcome to S14A2023 test'
 
 @app.route('/datetime')
 def show_datetime():
