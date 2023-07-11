@@ -10,8 +10,7 @@ links = [
     {'label': 'List', 'url': '/list'},
     {'label': 'Contact', 'url': '/contact'}
 ]
-
-
+# extra line
 @app.route("/")
 def index():
     return render_template('index.html', navigation=links)
