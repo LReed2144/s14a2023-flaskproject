@@ -1,0 +1,39 @@
+.navbar {
+    background-color: #333; /* Background color of the navbar */
+    color: #fff; /* Text color of the navbar */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar li {
+    margin-left: 10px;
+  }
+  
+  .navbar a {
+    color: #fff; /* Link color */
+    text-decoration: none;
+    padding: 5px;
+  }
+  
+  .navbar a:hover {
+    color: #ff0000; /* Link color on hover */
+  }
+  
+  * {
+    padding: 20%;
+  }
+
+  
