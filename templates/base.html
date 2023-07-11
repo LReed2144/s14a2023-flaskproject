@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='static/styles.css') }}">
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='styles.css') }}">
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-            <div class="'navbar">
+            <div class="navbar">
                 <ul>
                     {% for item in navigation %}
                     <a href="{{ item.url }}">{{ item.label }}</a>
