@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="icon" type="image/x-icon" href="static/favicon.ico"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='static/styles.css') }}">
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>URLLibrary</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   </head>
   <body>
     <header>
-      <div id="navbar-user">
-        {% for item in navigation %}
-          <a href="{{ item.url }}">{{ item.label }}</a>
-        {% endfor %}
-      </div>
+            <div class="'navbar">
+                <ul>
+                    {% for item in navigation %}
+                    <a href="{{ item.url }}">{{ item.label }}</a>
+                    {% endfor %}
+                </ul>
+            </div>
     </header>
     <h1 id="site_name"> URLLibrary</h1>
   {% block content %}
