@@ -1,10 +1,10 @@
 {
-    "headers": ["Name", "Count"],
+    "headers": ["Name", "Real Name"],
     "rows": [
-      ["Posh Spice", 1],
-      ["Scary Spice", 2],
-      ["Baby Spice", 3],
-      ["Sporty Spice", 4],
-      ["Ginger Spice", 5]
+      ["Posh Spice", "Victoria Beckham"],
+      ["Scary Spice", "Mel B"],
+      ["Baby Spice", "Emma Bunton"],
+      ["Sporty Spice", "Melanie C"],
+      ["Ginger Spice", "Geri Halliwell"]
     ]
   }
