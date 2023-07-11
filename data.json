@@ -1,0 +1,10 @@
+{
+    "headers": ["Name", "Count"],
+    "rows": [
+      ["Posh Spice", 1],
+      ["Scary Spice", 2],
+      ["Baby Spice", 3],
+      ["Sporty Spice", 4],
+      ["Ginger Spice", 5]
+    ]
+  }

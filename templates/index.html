@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Flask App</title>
-</head>
-<body>
-    <h1>Hello World! Welcome to S14A2023 test</h1>
-    <a href="/datetime">View Date and Time</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <h1>Welcome To S14A2023</h1>
+    
+<h2>Registration</h2>
+<form action="/register" method="post">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="password2" placeholder="Confirm Password" required>
+    <input type="submit" value="Register">
+</form>
+
+
+{% endblock %}
 

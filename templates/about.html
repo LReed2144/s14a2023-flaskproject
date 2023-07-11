@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block title %}About Page{% endblock %}
+
+<!-- This block is not used, it does not overwrite anything on the extended `base` template -->
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+
+<!-- This block overwrites the `content` block on the `base` or otherwise known as 'parent' template -->
+{% block content %}
+    <h1>About</h1>
+    <p class="important">
+     Welcome to the home page.
+     The author of this site is Lyndsey Reed.
+     She linguist and a front-end engineer. In her free time, she enjoys aerial hoop, spinning fire, and performing in Las Vegas.  
+    </p>
+{% endblock %}

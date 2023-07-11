@@ -3,3 +3,71 @@
 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 [33mPress CTRL+C to quit[0m
+ * Serving Flask app 'app.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.232:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+Traceback (most recent call last):
+  File "/Users/lyndseyreed/Library/Python/3.8/bin/flask", line 8, in <module>
+    sys.exit(main())
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/flask/cli.py", line 1063, in main
+    cli.main()
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/decorators.py", line 84, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/flask/cli.py", line 923, in run_command
+    run_simple(
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (4, 'Interrupted system call')
+ * Serving Flask app 'app.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.232:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+Traceback (most recent call last):
+  File "/Users/lyndseyreed/Library/Python/3.8/bin/flask", line 8, in <module>
+    sys.exit(main())
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/flask/cli.py", line 1063, in main
+    cli.main()
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/decorators.py", line 84, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/flask/cli.py", line 923, in run_command
+    run_simple(
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/Users/lyndseyreed/Library/Python/3.8/lib/python/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (4, 'Interrupted system call')
