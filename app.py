@@ -29,8 +29,8 @@ def about():
 @app.route('/list')
 def list():
     with open('data.json', 'r') as f:
-        table_data = json.load(f)
-    return render_template('list.html', title='List', navigation=links, table_data=table_data)
+        table = json.load(f)
+    return render_template('list.html', col='List', navigation=links, table=table)
 
 
 @app.route('/registration')

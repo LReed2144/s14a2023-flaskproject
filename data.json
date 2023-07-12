@@ -1,5 +1,5 @@
 {
-    "titles": ["Name", "Real Name"],
+    "cols": ["Name", "Real Name"],
     "rows": [
       ["Posh Spice", "Victoria Beckham"],
       ["Scary Spice", "Mel B"],
