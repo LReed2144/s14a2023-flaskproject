@@ -8,11 +8,14 @@
     {% endfor %}
     </tr>
   </thead>
-  <!-- <tbody>
-      {% for item in row %}
-        <td>{{ item }}</td>
+  <tbody>
+    <tr>
+    {% for row in table["rows"] %}
+      <tr>
+      {% for cell in row %}
+        <td>{{ cell }}</td>
       {% endfor %}
       </tr>
     {% endfor %}
   </tbody>
-{% endblock %} -->
+{% endblock %}
