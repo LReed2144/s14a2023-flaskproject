@@ -1,8 +1,29 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, request
 import json
 
+import requests
+from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail, Message
+import uuid
+
+db = SQLAlchemy()
 
 app = Flask(__name__)
+app.secret_key = 'ABCDEFG'
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'lyndsey@gmail.com'
+app.config['MAIL_PASSWORD'] = '1234'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
+
+postgres_connection_string = "postgresql://doadmin:AVNS_8l9GVHut1Gdw3ZxvSLB@db-postgresql-sfo3-s14a2023-do-user-14318939-0.b.db.ondigitalocean.com:25060/s14a2023?sslmode=require"
+app.config["SQLALCHEMY_DATABASE_URI"] = postgres_connection_string
+
+
 links = [
     {"label": "Login", "url": "/login"},
     {"label": "Home", "url": "/home"},
@@ -10,6 +31,51 @@ links = [
     {'label': 'List', 'url': '/list'},
     {'label': 'Contact', 'url': '/contact'}
 ]
+
+class User(db.Model):
+    email = db.Column(db.String)
+    phonenumber = db.Column(db.String)
+    updated_at = db.Column(db.String)
+    status = db.Column(db.Integer)
+    is_admin = db.Column(db.Boolean)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+
+@app.route("/users")
+def userList():
+    session['visited_list'] = True
+    with app.app_context():
+        # Query the whole table
+        userList = db.session.execute(
+            db.select(User).order_by(User.email)).scalars()
+        # is this right, email?
+        return render_template('users.html', users=userList)
+    
+@app.route('/adduser', methods=['POST'])
+def add():
+ if request.method == 'POST':
+        email= request.form['email']
+        status = request.form['status']
+        is_admin = request.form['is_admin']
+        id = request.form['id']
+        new_user = User(email=email, status=status, is_admin=is_admin, id=id)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('user.html'))
+ 
+
+ @app.route('/updateuser', methods=['POST'])
+def update():
+    return redirect(url_for('user.html'))
+
+ @app.route('/deleteuser', methods=['POST'])
+def delete():
+    return redirect(url_for('user.html'))
+
+
 # extra line
 @app.route("/")
 def index():
