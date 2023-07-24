@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} User List {% endblock %}
+
+<!-- This block overwrites the `content` block on the `base` or otherwise known as 'parent' template -->
+{% block content %}
+<h1>Userss</h1>
+<table>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phonenumber }}</td>
+        <td>{{ user.status }}</td>
+        <td>{{ user.is_admin }}</td>
+        <td>{{ user.id }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
