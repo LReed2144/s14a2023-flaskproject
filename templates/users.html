@@ -4,17 +4,34 @@
 
 <!-- This block overwrites the `content` block on the `base` or otherwise known as 'parent' template -->
 {% block content %}
-<h1>Userss</h1>
-<table>
-    {% for user in users %}
-    <tr>
-        <td>{{ user.email }}</td>
-        <td>{{ user.phonenumber }}</td>
-        <td>{{ user.status }}</td>
-        <td>{{ user.is_admin }}</td>
-        <td>{{ user.id }}</td>
-    </tr>
-    {% endfor %}
-</table>
-
+<body>
+    <h1>Users</h1>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Status</th>
+            <th>Is Admin</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Delete</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phonenumber }}</td>
+            <td>{{ user.status }}</td>
+            <td>{{ user.is_admin }}</td>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>
+                <form action="/deleteuser" method="post">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
 {% endblock %}

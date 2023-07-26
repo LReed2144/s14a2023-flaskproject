@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, redirect, url_for
 import json
 
 import requests
@@ -23,6 +23,7 @@ mail = Mail(app)
 postgres_connection_string = "postgresql://doadmin:AVNS_8l9GVHut1Gdw3ZxvSLB@db-postgresql-sfo3-s14a2023-do-user-14318939-0.b.db.ondigitalocean.com:25060/s14a2023?sslmode=require"
 app.config["SQLALCHEMY_DATABASE_URI"] = postgres_connection_string
 
+db.init_app(app)
 
 links = [
     {"label": "Login", "url": "/login"},
@@ -32,7 +33,8 @@ links = [
     {'label': 'Contact', 'url': '/contact'}
 ]
 
-class User(db.Model):
+
+class Users(db.Model):
     email = db.Column(db.String)
     phonenumber = db.Column(db.String)
     updated_at = db.Column(db.String)
@@ -48,16 +50,17 @@ class User(db.Model):
 def userList():
     session['visited_list'] = True
     with app.app_context():
-        # Query the whole table
+    # Query the whole table
         userList = db.session.execute(
-            db.select(User).order_by(User.email)).scalars()
+            db.select(Users).order_by(Users.email)).scalars()
         # is this right, email?
         return render_template('users.html', users=userList)
-    
+
+
 @app.route('/adduser', methods=['POST'])
 def add():
- if request.method == 'POST':
-        email= request.form['email']
+    if request.method == 'POST':
+        email = request.form['email']
         status = request.form['status']
         is_admin = request.form['is_admin']
         id = request.form['id']
@@ -65,15 +68,23 @@ def add():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('user.html'))
- 
 
- @app.route('/updateuser', methods=['POST'])
+
+@app.route('/updateuser', methods=['POST'])
 def update():
     return redirect(url_for('user.html'))
 
- @app.route('/deleteuser', methods=['POST'])
+
+@app.route('/deleteuser', methods=['POST'])
 def delete():
-    return redirect(url_for('user.html'))
+  def delete():
+    user_id_to_delete = int(request.form.get('user_id', 0))
+
+    if user_id_to_delete > 0:
+        delete_user_from_database(user_id_to_delete)
+
+    return redirect(url_for('user'))
+
 
 
 # extra line
@@ -114,5 +125,3 @@ def login():
 @app.route('/contact')
 def contact():
     return render_template('contact.html', title='contact', navigation=links)
-
-

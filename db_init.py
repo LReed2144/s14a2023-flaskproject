@@ -33,19 +33,19 @@ class User(db.Model):
 #     def as_dict(self):
 #         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
     
-    with app.app_context():
-        db.create_all()
+with app.app_context():
+    db.create_all()
 
        # Query the whole table
-        Users = db.session.execute(db.select(User).order_by(User.email)).scalars()
+    Users = db.session.execute(db.select(User).order_by(User.email)).scalars()
     for u in Users:
         print(u.as_dict())
     print("==========After Select All 1===============")
 
     # Insert a new object
     user1 = User(
-        username="username1",
         email="email1@example.com",
+        # add in all later
     )
     db.session.add(user1)
     db.session.commit()
