@@ -45,6 +45,18 @@ class Users(db.Model):
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+    
+
+class Order(db.Model):
+    id = db.Column(db.Integer)
+    item_name = db.Column(db.String)
+    item_count = db.Column(db.Integer)
+    total = db.Column(db.Integer)
+    user_id = db.Column(db.Integer)
+    
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 @app.route("/users")
