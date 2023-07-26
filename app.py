@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import json
 
 import requests
@@ -30,7 +30,8 @@ links = [
     {"label": "Home", "url": "/home"},
     {"label": "About", "url": "/about"},
     {'label': 'List', 'url': '/list'},
-    {'label': 'Contact', 'url': '/contact'}
+    {'label': 'Contact', 'url': '/contact'},
+    {'label': 'Users', 'url': '/users'}
 ]
 
 
@@ -49,12 +50,9 @@ class Users(db.Model):
 @app.route("/users")
 def userList():
     session['visited_list'] = True
-    with app.app_context():
     # Query the whole table
-        userList = db.session.execute(
-            db.select(Users).order_by(Users.email)).scalars()
-        # is this right, email?
-        return render_template('users.html', users=userList)
+    userList = Users.query.order_by(Users.email).all()
+    return render_template('users.html', users=userList)
 
 
 @app.route('/adduser', methods=['POST'])
@@ -63,31 +61,30 @@ def add():
         email = request.form['email']
         status = request.form['status']
         is_admin = request.form['is_admin']
-        id = request.form['id']
-        new_user = User(email=email, status=status, is_admin=is_admin, id=id)
+        new_user = Users(email=email, status=status, is_admin=is_admin)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('user.html'))
+        return redirect(url_for('userList'))
+
 
 
 @app.route('/updateuser', methods=['POST'])
 def update():
-    return redirect(url_for('user.html'))
+    return redirect(url_for('userList'))
 
 
 @app.route('/deleteuser', methods=['POST'])
-def delete():
-  def delete():
-    user_id_to_delete = int(request.form.get('user_id', 0))
+def delete_user():
+    user_id = int(request.form.get('user_id'))
+    user = Users.query.get(user_id)
 
-    if user_id_to_delete > 0:
-        delete_user_from_database(user_id_to_delete)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
 
-    return redirect(url_for('user'))
+    return redirect(url_for('userList',navigation=links))
 
 
-
-# extra line
 @app.route("/")
 def index():
     return render_template('index.html', navigation=links)
@@ -112,16 +109,17 @@ def list():
 
 @app.route('/registration')
 def registration():
-
     return render_template('registration.html', title='Registration', navigation=links)
 
 
 @app.route('/login')
 def login():
-
     return render_template('login.html', title='Login', navigation=links)
 
 
 @app.route('/contact')
 def contact():
     return render_template('contact.html', title='contact', navigation=links)
+
+if __name__ == "__main__":
+    app.run(debug=True)
